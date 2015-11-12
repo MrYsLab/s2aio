@@ -47,4 +47,5 @@ If you select Snap! as the client with the "-c snap" option,  the web page will 
 The snap block files can be found at:
 
 For Linux - /usr/local/lib/python3.5/dist-packages/s2aio/Snap!Files
+
 For Windows - C:\Users\YOUR USER NAME\AppData\Local\Programs\Python\Python35\Lib\site-packages\s2aio\Snap!Files
