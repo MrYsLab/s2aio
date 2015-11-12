@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='s2aio',
-    version='1.0',
+    version='1.1',
     packages=['s2aio'],
     install_requires=['pymata-aio>=2.7',
                       'aiohttp>=0.18.3'],
@@ -16,8 +16,8 @@ setup(
             's2aio = s2aio.__main__:main'
         ]
     },
-    url='https://github.com/MrYsLab/pymata-aio/wiki',
-    download_url='https://github.com/MrYsLab/pymata-aio',
+    url='https://github.com/MrYsLab/s2aio/wiki',
+    download_url='https://github.com/MrYsLab/s2aio',
     license='GNU General Public License v3 (GPLv3)',
     author='Alan Yorinks',
     author_email='MisterYsLab@gmail.com',
