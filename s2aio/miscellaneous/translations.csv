@@ -1,0 +1,11 @@
+ln_languages = English,Dutch (NL),Spanish,Chinese(zh_cn),French(FR),Portuguese(PT),German(DE),Korean(KO), Chinese(zh_tw),Italian(IT),Greek(GR)
+ln_ENABLE = Enable,aan,Activar,允许,Activer,Ativar,Setze,사용,啟用,Attiva,Ενεργοποίηση
+ln_DISABLE =Disable,uit,Desactivar,禁止,Désactiver,Desativar,Deaktiviere,미사용,停用,Disattiva,Απενεργοποίηση
+ln_INPUT = Input,ingang,Entrada,输入,entrée.,Entrada,Eingang,입력,輸入,Ingresso,Είσοδο
+ln_OUTPUT = Output,uitgang,Salida,输出,sortie.,Saída,Ausgang,출력,輸出,Uscita,Έξοδο
+ln_PWM = PWM,PWM,PWM,PWM,impulsion PWM.,PWM,PWM,전류조절,PWM,PWM,PWM
+ln_SERVO = Servo,servo,Servo,舵机,rotation Servo-moteur.,Servo,Servo,서보모터,伺服機,Servo,Σέρβο
+ln_TONE = Tone,toon,Tono,音调,sortie Son.,Som,Ton,신호음,音調,Tono,Τόνος
+ln_SONAR = SONAR,afstand,SONAR,超声波,mesure Sonar.,Ultrassom,Ultraschall,음파탐지,超音波,Sonar,Σόναρ
+ln_OFF = Off,ingeschakeld,No,关,Arrêt,Não,Nein,끄기,關,No,Κλείσιμο
+ln_ON = On,uitgeschakeld,Si,开,Marche,Sim,Ja,켜기,開,Si,Άνοιγμα

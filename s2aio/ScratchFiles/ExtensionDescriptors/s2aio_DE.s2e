@@ -1,0 +1,96 @@
+{
+    "extensionName": "s2aio",
+    "extensionPort": 50209,
+    "url": "https://github.com/MrYsLab/PyMata",
+    "blockSpecs": [
+        [
+            " ",
+            "%m.pin_state DigitalPIN %n als %m.digital_pin_mode",
+            "digital_pin_mode",
+            "Setze",
+            "PIN",
+            "Eingang"
+        ],
+        [
+            " ",
+            "%m.pin_state AnalogPIN (A) %n als Eingang",
+            "analog_pin_mode",
+            "Setze",
+            "PIN"
+        ],
+        [
+            "",
+            "Setze Digitalwert an PIN %n zu %m.high_low",
+            "digital_write",
+            "PIN",
+            0
+        ],
+        [
+            "",
+            "Setze Analogwert (PWM) an PIN %n zu %n",
+            "analog_write",
+            "PIN",
+            "VAL"
+        ],
+        [
+            "",
+            "Erzeuge Ton an PIN: %n HZ: %n f�r MS: %n",
+            "play_tone",
+            "PIN",
+            1000,
+            500
+        ],
+        [
+            "",
+            "Schalte Ton an PIN %n aus",
+            "tone_off",
+            "PIN"
+        ],
+        [
+            "",
+            "Bewege Servo an PIN %n zu Position %n Grad",
+            "set_servo_position",
+            "PIN",
+            90
+        ],
+        [
+            "r",
+            "Lese DigitalPIN %n",
+            "digital_read",
+            "PIN"
+        ],
+        [
+            "r",
+            "Lese AnalogPIN (A) %n",
+            "analog_read",
+            "PIN"
+        ],
+        [
+            "r",
+            "Debuggen",
+            "problem"
+        ]
+    ],
+    "menus": {
+        "pin_state": [
+            "Setze",
+            "Deaktiviere"
+        ],
+        "digital_pin_mode": [
+            "Eingang",
+            "Ausgang",
+            "PWM",
+            "Servo",
+            "Ton",
+            "Ultraschall"
+        ],
+        "high_low": [
+            "0",
+            "1"
+        ],
+        "off_on": [
+            "Nein",
+            "Ja"
+        ]
+    }
+}

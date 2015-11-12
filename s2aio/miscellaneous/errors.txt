@@ -1,0 +1,57 @@
+
+DIGITAL PIN MODE BLOCK
+1-1      Pin Must Be Specified as an Integer
+1-2      Pin number exceeds the maximum number of pins for the arduino
+1-3      Pin does not support digital input mode
+1-4      Pin does not support digital output mode
+1-5      Pin does support PWM mode
+1-6      Pin does not support servo mode
+1-7      Pin does not support tone mode
+1-8      Pin does not support SONAR mode
+1-9      Unknown Pin Mode specified
+1-10     Pin must be input mode to be disabled
+
+ANALOG PIN MODE BLOCK
+2-1      Pin Must Be Specified as an Integer
+2-2      Pin is not a valid analog pin
+
+DIGITAL PIN WRITE
+3-1      Pin Must Be Specified as an Integer
+3-2      Pin number is invalid
+3-3      Pin is not configured for digital output
+
+ANALOG PIN WRITE
+4-1      Pin Must Be Specified as an Integer
+4-2      Pin number is invalid
+4-3      Pin is not configured for PWM output
+4-4      Value must be specified as an integer
+4-5      Value must be in the range of 0-255
+
+PLAY TONE
+5-1      Pin Must Be Specified as an Integer
+5-2      Pin number is not valid
+5-3      Pin was not properly configured
+5-4      Frequency must be specified as an integer
+5-5      Duration must be specified as an integer
+
+NO TONE
+6-1      Pin Must Be Specified as an Integer
+6-2      Pin number is not valid
+6-3      Pin was not properly configured
+
+SERVO POSITION
+7-1      Pin Must Be Specified as an Integer
+7-2      Pin number is not valid
+7-3      Pin was not properly configured
+7-4      Position must be specified as an integer
+7-5      Position must be in the range of 0 - 180
+
+DIGITAL_READ (Snap! Only)
+8-1      Pin Must Be Specified as an Integer
+8-2      Pin number is not valid
+8-3      Pin is not properly configured
+
+ANALOG_READ (Snap! Only)
+9-1      Pin Must Be Specified as an Integer
+9-2      Pin number is not a valid analog pin number
+9-3      Pin is not properly configured

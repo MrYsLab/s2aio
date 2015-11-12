@@ -1,0 +1,96 @@
+{
+    "extensionName": "s2aio",
+    "extensionPort": 50209,
+    "url": "https://github.com/MrYsLab/PyMata",
+    "blockSpecs": [
+        [
+            " ",
+            "%m.pin_state PINO Digital %n como %m.digital_pin_mode",
+            "digital_pin_mode",
+            "Ativar",
+            "PINO",
+            "Entrada"
+        ],
+        [
+            " ",
+            "%m.pin_state PINO Analógico (A) %n como entrada",
+            "analog_pin_mode",
+            "Ativar",
+            "PINO"
+        ],
+        [
+            "",
+            "Valor Digital no PINO %n mudar para %m.high_low",
+            "digital_write",
+            "PINO",
+            0
+        ],
+        [
+            "",
+            "Escrever valor Analógico(PWM) no PINO %n mudar para a %n",
+            "analog_write",
+            "PINO",
+            "VAL"
+        ],
+        [
+            "",
+            "Gerar Som no PINO: %n HZ: %n MS: %n",
+            "play_tone",
+            "PINO",
+            1000,
+            500
+        ],
+        [
+            "",
+            "Desligar Som no PINO: %n",
+            "tone_off",
+            "PINO"
+        ],
+        [
+            "",
+            "Mover Servo no PINO %n em Graus: %n",
+            "set_servo_position",
+            "PINO",
+            90
+        ],
+        [
+            "r",
+            "Ler PINO Digital %n",
+            "digital_read",
+            "PINO"
+        ],
+        [
+            "r",
+            "Ler PINO Analógico(A) %n",
+            "analog_read",
+            "PINO"
+        ],
+        [
+            "r",
+            "Debugar",
+            "problem"
+        ]
+    ],
+    "menus": {
+        "pin_state": [
+            "Ativar",
+            "Desativar"
+        ],
+        "digital_pin_mode": [
+            "Entrada",
+            "Saída",
+            "PWM",
+            "Servo",
+            "Som",
+            "Ultrassom"
+        ],
+        "high_low": [
+            "0",
+            "1"
+        ],
+        "off_on": [
+            "Não",
+            "Sim"
+        ]
+    }
+}
