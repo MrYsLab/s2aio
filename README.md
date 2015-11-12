@@ -32,11 +32,13 @@ Here are the command line arguments available for s2aio:
 usage: __main__.py [-h] [-c CLIENT] [-l LANGUAGE] [-p COMPORT]
 
 optional arguments:
+
   -h, --help   show this help message and exit
+  
   -c CLIENT    default = scratch [scratch | snap | no_client]
-  -l LANGUAGE  1=English(default) 2=Chinese(zh-CN) 3=Chinese(zh-TW)
-               4=Dutch(NL) 5=French(FR) 6=German(DE) 7=Greek(GR) 8=Korean(KO)
-               9=Italian(IT) 10=Portuguese(PT) 11=Spanish(ES)
+  
+  -l LANGUAGE  1=English(default) 2=Chinese(zh-CN) 3=Chinese(zh-TW) 4=Dutch(NL) 5=French(FR) 6=German(DE) 7=Greek(GR) 8=Korean(KO) 9=Italian(IT) 10=Portuguese(PT) 11=Spanish(ES)
+               
   -p COMPORT   Arduino COM port - e.g. /dev/ttyACMO or COM3
 
 
