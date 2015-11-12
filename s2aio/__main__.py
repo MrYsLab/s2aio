@@ -182,6 +182,7 @@ class S2AIO:
             elif self.client == 'snap':
                 new = 2
                 webbrowser.open(self.snap_url, new=new)
+                await asyncio.sleep(self.windows_wait_time)
             else:
                 # no client specified, just start s2aio and wait for the user to start the client of choice
                 pass
@@ -745,8 +746,13 @@ class S2AIO:
         :return: HTTP reply
         """
         problem = self.last_problem.split(' ')
-        return web.Response(headers={"Access-Control-Allow-Origin": "*"},
-                            content_type="text/html; charset=ISO-8859-1", text=problem[1])
+
+        # snap can return an empty problem so we need to compensate
+        try:
+            return web.Response(headers={"Access-Control-Allow-Origin": "*"},
+                                content_type="text/html; charset=ISO-8859-1", text=problem[1])
+        except IndexError:
+            return web.Response(body="ok".encode('utf-8'))
 
     async def poll_watchdog(self):
         """
