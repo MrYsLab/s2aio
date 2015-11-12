@@ -8,7 +8,7 @@ From a command window type:
 
 pip install s2aio
 
-(for linux type: sudo pip install s2aio)
+(for linux type: sudo pip3 install s2aio)
 
 All libraries needed by the program will be installed on your computer.
 
