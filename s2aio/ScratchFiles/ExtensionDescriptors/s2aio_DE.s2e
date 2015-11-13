@@ -34,7 +34,7 @@
         ],
         [
             "",
-            "Erzeuge Ton an PIN: %n HZ: %n f�r MS: %n",
+            "Erzeuge Ton an PIN: %n HZ: %n für MS: %n",
             "play_tone",
             "PIN",
             1000,
