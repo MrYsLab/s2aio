@@ -37,7 +37,7 @@ from pymata_aio.pymata_core import PymataCore
 
 # noinspection PyUnusedLocal
 class S2AIO:
-    def __init__(self, client='scratch', language='1', com_port=None):
+    def __init__(self, client='scratch', language='1', com_port=None, base_path=None):
         """
         This is the constructor for the s2aio. Establish somme class variables for use
         :param client: Client specifier Scratch or Snap!
@@ -49,16 +49,23 @@ class S2AIO:
 
         py_minor = py_version[1]
 
-        if sys.platform.startswith('win32'):
-            # noinspection PyPep8
-            self.pkg_path = os.environ[
-                                'USERPROFILE'] + '/AppData/local/Programs/python/python35/lib/site-packages/s2aio'
+
+        self.base_path = base_path
+
+        if self.base_path:
+            self.pkg_path = self.base_path
+
+
         else:
-            self.pkg_path = "/usr/local/lib/python3." + py_minor + "/dist-packages/s2aio"
+            if sys.platform.startswith('win32'):
+                # noinspection PyPep8
+                self.pkg_path = os.environ[
+                                    'USERPROFILE'] + '/AppData/local/Programs/python/python35/lib/site-packages/s2aio'
+            else:
+                self.pkg_path = "/usr/local/lib/python3." + py_minor + "/dist-packages/s2aio"
 
         # grab the config file and get it ready for parsing
         config = configparser.ConfigParser()
-        # config.read('xlate.cfg', encoding="utf8")
         config_file_path = str(self.pkg_path + '/configuration/configuration.cfg')
         config.read(config_file_path, encoding="utf8")
 
@@ -103,6 +110,7 @@ class S2AIO:
 
         # scratch command
         self.command = None
+
 
         # HTTP reply to poll request. It is built as needed
         self.poll_reply = ""
@@ -792,6 +800,7 @@ def main():
                                                                  " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
                                                                  " 10=Portuguese(PT) 11=Spanish(ES)")
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
+    parser.add_argument("-b", dest="base_path", default="None", help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
 
     args = parser.parse_args()
 
@@ -801,9 +810,14 @@ def main():
     else:
         comport = args.comport
 
+    if args.base_path == 'None':
+        user_base_path = None
+    else:
+        user_base_path = args.base_path
+
     language_type = args.language
 
-    s2aio = S2AIO(client=client_type, language=language_type, com_port=comport)
+    s2aio = S2AIO(client=client_type, language=language_type, com_port=comport, base_path=user_base_path)
 
     the_loop = asyncio.get_event_loop()
     the_loop.run_until_complete((s2aio.kick_off(the_loop)))
