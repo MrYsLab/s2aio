@@ -1,5 +1,16 @@
 A work in progress
 
+###******************************************************************************************
+#IMPORTANT NOTE FOR MAC USERS
+A bug has been reported and is documented [here](https://github.com/MrYsLab/s2aio/issues).
+A fix will be available as soon as possible.
+
+If you are seeing a similar probelm on another operating system, please let me know.
+
+The code has been tested on Windows and Ubuntu 15.10 and works without issue.
+###******************************************************************************************
+
+
 More detailed documentation is on the way, but if you would like to try it out, here are some initial guidelines.
 
 To install s2aio, first install python 3.5 (it must be 3.5!) on your computer. 
