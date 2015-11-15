@@ -1,31 +1,5 @@
 A work in progress
 
-###******************************************************************************************
-#IMPORTANT NOTE FOR MAC USERS AND OTHERS
-If you are getting an exception similar to the one shown [here](https://github.com/MrYsLab/s2aio/issues).
-
-you can get around the problem by using the -b option when starting s2aio.
-
-To eplicitly identify where the s2aio files were installed, use a start up command similar to the following:
-
-`
-s2aio -b /usr/local/lib/python3.5/dist-packages/s2aio
-`
-
-If you are not sure what the path is, if you type:
-
-`
-pip uninstall s2aio
-`
-
-the install path will be shown when the files are removed. You can copy the path, up to and including s2aio and use that 
-as the -b option
-
-Reinstall s2aio with pip and when you start s2aio provide the -b option
-
-###******************************************************************************************
-
-
 More detailed documentation is on the way, but if you would like to try it out, here are some initial guidelines.
 
 To install s2aio, first install python 3.5 (it must be 3.5!) on your computer. 
