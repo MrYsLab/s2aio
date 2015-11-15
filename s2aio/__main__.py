@@ -25,7 +25,6 @@ import asyncio
 import configparser
 import os
 import os.path
-import platform
 import signal
 import sys
 import webbrowser
@@ -45,28 +44,34 @@ class S2AIO:
         :return: None
         """
 
-        py_version = platform.python_version_tuple()
-
-        py_minor = py_version[1]
-
-
+        # establish initial base_path - where s2aio lives
         self.base_path = base_path
 
-        if self.base_path:
-            self.pkg_path = self.base_path
+        # if not base path was specified, try to establish one
+        if not self.base_path:
+            # get all the paths
+            path = sys.path
 
+            # get the prefix
+            prefix = sys.prefix
+            print('path = ' + str(path))
+            print('prefix = ' + str(prefix))
+            for p in path:
+                # make sure the prefix is in the path to avoid false positives
+                if prefix in p:
+                    # look for the configuration directory
+                    s_path = p + '/s2aio/configuration'
+                    if os.path.isdir(s_path):
+                        # found it, set the base path
+                        self.base_path = p + '/s2aio'
 
-        else:
-            if sys.platform.startswith('win32'):
-                # noinspection PyPep8
-                self.pkg_path = os.environ[
-                                    'USERPROFILE'] + '/AppData/local/Programs/python/python35/lib/site-packages/s2aio'
-            else:
-                self.pkg_path = "/usr/local/lib/python3." + py_minor + "/dist-packages/s2aio"
+        if not self.base_path:
+            print('Cannot locate s2aio configuration directory.')
+            sys.exit(0)
 
         # grab the config file and get it ready for parsing
         config = configparser.ConfigParser()
-        config_file_path = str(self.pkg_path + '/configuration/configuration.cfg')
+        config_file_path = str(self.base_path + '/configuration/configuration.cfg')
         config.read(config_file_path, encoding="utf8")
 
         # parse the file and place the translation information into the appropriate variable
@@ -101,7 +106,7 @@ class S2AIO:
 
         self.windows_wait_time = int(config.get('scratch_info', 'windows_wait_time'))
 
-        self.scratch_project = self.pkg_path + '/ScratchFiles/ScratchProjects/' + scratch_block_language_dict[language]
+        self.scratch_project = self.base_path + '/ScratchFiles/ScratchProjects/' + scratch_block_language_dict[language]
 
         self.client = client
 
@@ -110,7 +115,6 @@ class S2AIO:
 
         # scratch command
         self.command = None
-
 
         # HTTP reply to poll request. It is built as needed
         self.poll_reply = ""
@@ -800,7 +804,8 @@ def main():
                                                                  " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
                                                                  " 10=Portuguese(PT) 11=Spanish(ES)")
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
-    parser.add_argument("-b", dest="base_path", default="None", help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
+    parser.add_argument("-b", dest="base_path", default="None",
+                        help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
 
     args = parser.parse_args()
 
