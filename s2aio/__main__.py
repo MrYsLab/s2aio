@@ -36,7 +36,8 @@ from pymata_aio.pymata_core import PymataCore
 
 # noinspection PyUnusedLocal
 class S2AIO:
-    def __init__(self, client='scratch', language='1', com_port=None, base_path=None):
+    def __init__(self, client='scratch', language='1', com_port=None, base_path=None,
+                 version_request=False):
         """
         This is the constructor for the s2aio. Establish somme class variables for use
         :param client: Client specifier Scratch or Snap!
@@ -54,8 +55,6 @@ class S2AIO:
 
             # get the prefix
             prefix = sys.prefix
-            print('path = ' + str(path))
-            print('prefix = ' + str(prefix))
             for p in path:
                 # make sure the prefix is in the path to avoid false positives
                 if prefix in p:
@@ -64,6 +63,13 @@ class S2AIO:
                     if os.path.isdir(s_path):
                         # found it, set the base path
                         self.base_path = p + '/s2aio'
+
+        # get version info if requested
+        if version_request:
+            print()
+            print('s2aio version 1.4 - 16 Nov 2015')
+            print('Python path = ' + self.base_path)
+
 
         if not self.base_path:
             print('Cannot locate s2aio configuration directory.')
@@ -798,7 +804,8 @@ class S2AIO:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", dest="client", default="scratch", help="default = scratch [scratch | snap | no_client]")
-    parser.add_argument("-l", dest="language", default="1", help=" 1=English(default) 2=Chinese(zh-CN)"
+    parser.add_argument("-l", dest="language", default="1", help=
+                                                                " 1=English(default) 2=Chinese(zh-CN)"
                                                                  " 3=Chinese(zh-TW)"
                                                                  " 4=Dutch(NL) 5=French(FR) 6=German(DE)"
                                                                  " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
@@ -806,6 +813,7 @@ def main():
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
     parser.add_argument("-b", dest="base_path", default="None",
                         help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
+    parser.add_argument("-v", action='store_true', help='Print version and Python path')
 
     args = parser.parse_args()
 
@@ -822,7 +830,10 @@ def main():
 
     language_type = args.language
 
-    s2aio = S2AIO(client=client_type, language=language_type, com_port=comport, base_path=user_base_path)
+    version = parser.parse_args('-v'.split())
+
+    s2aio = S2AIO(client=client_type, language=language_type, com_port=comport, base_path=user_base_path,
+                  version_request=args.v)
 
     the_loop = asyncio.get_event_loop()
     the_loop.run_until_complete((s2aio.kick_off(the_loop)))
