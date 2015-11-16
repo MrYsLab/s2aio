@@ -69,6 +69,7 @@ class S2AIO:
             print()
             print('s2aio version 1.4 - 16 Nov 2015')
             print('Python path = ' + self.base_path)
+            sys.exit(0)
 
 
         if not self.base_path:
