@@ -1,6 +1,6 @@
  ![](https://github.com/MrYsLab/s2aio/blob/master/images/happy.png)
 
-Program, control and monitor an [Arduino](https://www.arduino.cc/) board using the [Scratch](scratch.mit.edu) or [Snap!](http://snap.berkeley.edu/) visual programming languages without having to learn the C++. 
+Program, control and monitor an [Arduino](https://www.arduino.cc/) board using the [Scratch](scratch.mit.edu) or [Snap!](http://snap.berkeley.edu/) visual programming languages without having to learn C++. 
 
 ![](https://github.com/MrYsLab/s2aio/blob/master/images/examples/blink.png)
 
