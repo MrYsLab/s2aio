@@ -1,5 +1,11 @@
 #Change Log
 
+###Version 1.5
+
+19 Nov 2015
+
+Fixed startup issue when using -c no_client or -c snap command line options
+
 ###Version 1.4
 
 16 Nov 2015

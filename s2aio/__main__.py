@@ -67,10 +67,9 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.4 - 16 Nov 2015')
+            print('s2aio version 1.5 - 19 Nov 2015')
             print('Python path = ' + self.base_path)
             sys.exit(0)
-
 
         if not self.base_path:
             print('Cannot locate s2aio configuration directory.')
@@ -223,6 +222,8 @@ class S2AIO:
 
             if self.client == 'scratch':
                 await self.poll_watchdog()
+            else:
+                await self.keep_alive()
             return srv
         except:
             pass
@@ -792,6 +793,15 @@ class S2AIO:
                 self.loop.close()
                 sys.exit(0)
 
+    # noinspection PyMethodMayBeStatic
+    async def keep_alive(self):
+        """
+        This method is used to keep the server up and running when not connected to Scratch
+        :return:
+        """
+        while True:
+            await asyncio.sleep(1)
+
     async def set_problem(self, problem):
         """
         This method adds the problem to the poll reply and saves it as last_problem for snap!
@@ -805,6 +815,7 @@ class S2AIO:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", dest="client", default="scratch", help="default = scratch [scratch | snap | no_client]")
+    # noinspection PyPep8
     parser.add_argument("-l", dest="language", default="1", help=
                                                                 " 1=English(default) 2=Chinese(zh-CN)"
                                                                  " 3=Chinese(zh-TW)"
@@ -831,13 +842,18 @@ def main():
 
     language_type = args.language
 
+    # noinspection PyUnusedLocal
     version = parser.parse_args('-v'.split())
 
     s2aio = S2AIO(client=client_type, language=language_type, com_port=comport, base_path=user_base_path,
                   version_request=args.v)
 
     the_loop = asyncio.get_event_loop()
-    the_loop.run_until_complete((s2aio.kick_off(the_loop)))
+    # noinspection PyBroadException
+    try:
+        the_loop.run_until_complete((s2aio.kick_off(the_loop)))
+    except:
+        sys.exit(0)
     asyncio.sleep(2)
 
     # signal handler function called when Control-C occurs
@@ -856,7 +872,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit(0)
 
     loop = asyncio.get_event_loop()
 
