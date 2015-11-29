@@ -2,10 +2,10 @@ from setuptools import setup
 
 setup(
     name='s2aio',
-    version='1.5',
+    version='1.6',
     packages=['s2aio'],
     install_requires=['pymata-aio>=2.7',
-                      'aiohttp>=0.18.3'],
+                      'aiohttp>=0.19.0'],
     package_data={'s2aio': [('configuration/*.cfg'),
                             ('miscellaneous/*.txt, *.csv, *.ods'),
                             ('ScratchFiles/ExtensionDescrptors/*.s2e'),

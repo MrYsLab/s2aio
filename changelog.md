@@ -1,5 +1,12 @@
 #Change Log
 
+###Version 1.6
+
+29 Nov 2015
+
+aiohttp 0.19.0 update changed reply format.
+This release updates s2aio to these changes.
+
 ###Version 1.5
 
 19 Nov 2015
