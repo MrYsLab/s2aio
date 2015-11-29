@@ -305,7 +305,7 @@ class S2AIO:
 
         # send the HTTP response
         return web.Response(headers={"Access-Control-Allow-Origin": "*"},
-                            content_type="text/html; charset=ISO-8859-1", text=total_reply)
+                            content_type="text/html", charset="ISO-8859-1", text=total_reply)
 
     async def setup_digital_pin(self, request):
         """
