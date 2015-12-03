@@ -5,6 +5,8 @@ Program, control and monitor an [Arduino](https://www.arduino.cc/) board using t
 ![](https://github.com/MrYsLab/s2aio/blob/master/images/examples/blink.png)
 
 ### **Included with s2aio are programming blocks** for the _**following languages**_:
+
+[![Join the chat at https://gitter.im/MrYsLab/s2aio](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MrYsLab/s2aio?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * English (EN)
 * Chinese (zh-CN)
 * Chinese (zh-TW)
