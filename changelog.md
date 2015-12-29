@@ -1,5 +1,14 @@
 #Change Log
 
+###Version 1.7
+
+29 Dec 2015
+
+Updated French Scratch and Snap! Block Translations.
+configuration.cfg and s2aio_base_FR.sb2 were updated to reflect the update.
+Fixed bug for Snap! reading digital input
+No code changes for Scratch support
+
 ###Version 1.6
 
 29 Nov 2015

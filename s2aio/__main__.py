@@ -711,7 +711,7 @@ class S2AIO:
             await self.set_problem('problem 8-3\n')
             return web.Response(body="ok".encode('utf-8'))
 
-        if pin_state[1] != Constants.OUTPUT:
+        if pin_state[1] != Constants.INPUT:
             await self.set_problem('problem 8-3\n')
             return web.Response(body="ok".encode('utf-8'))
 
