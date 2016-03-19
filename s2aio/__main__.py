@@ -384,7 +384,7 @@ class S2AIO:
             elif mode == 'SONAR':
                 if pin in self.input_capable:
                     # send the pin mode to the arduino
-                    await self.board.sonar_config(pin, pin, self.digital_input_callback, Constants.CB_TYPE_ASYNCIO)
+                    await self.board.sonar_config(pin, pin, cb=self.digital_input_callback, cb_type=Constants.CB_TYPE_ASYNCIO)
                 else:
                     # this pin does not support output mode
                     await self.set_problem('problem 1-8\n')

@@ -1,4 +1,10 @@
-#Change Log
+# Change Log
+
+### Version 1.8
+
+19 March 2016
+
+Fixed bug in setting up and retrieving SONAR data
 
 ###Version 1.7
 
