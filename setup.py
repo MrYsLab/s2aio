@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='s2aio',
-    version='1.8',
+    version='1.9',
     packages=['s2aio'],
     install_requires=['pymata-aio>=2.7',
                       'aiohttp>=0.19.0'],

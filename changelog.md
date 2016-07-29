@@ -1,5 +1,8 @@
 # Change Log
 
+### Version 1.9
+Recognize Arduino pullup pin type for Firmata 2.5.3
+
 ### Version 1.8
 
 19 March 2016

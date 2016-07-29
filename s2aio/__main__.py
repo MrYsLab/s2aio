@@ -67,7 +67,7 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.6 - 29 Nov 2015')
+            print('s2aio version 1.9 - 29 Jul 2016')
             print('Python path = ' + self.base_path)
             sys.exit(0)
 
@@ -268,6 +268,8 @@ class S2AIO:
                         self.servo_capable.append(pin_count)
                     elif y == 6:
                         self.i2c_capable.append(pin_count)
+                    elif y == 13:  # ignore pull-up
+                        pass
                     else:
                         print('Unknown Pin Type ' + y)
                 # clear the pin_data list for the next pin and bump up the pin count
@@ -384,7 +386,8 @@ class S2AIO:
             elif mode == 'SONAR':
                 if pin in self.input_capable:
                     # send the pin mode to the arduino
-                    await self.board.sonar_config(pin, pin, cb=self.digital_input_callback, cb_type=Constants.CB_TYPE_ASYNCIO)
+                    await self.board.sonar_config(pin, pin, cb=self.digital_input_callback,
+                                                  cb_type=Constants.CB_TYPE_ASYNCIO)
                 else:
                     # this pin does not support output mode
                     await self.set_problem('problem 1-8\n')
@@ -786,6 +789,7 @@ class S2AIO:
             current_time = self.loop.time()
             if current_time - self.poll_time_stamp > 1:
                 await self.board.send_reset()
+
                 for t in asyncio.Task.all_tasks(self.loop):
                     t.cancel()
                 self.loop.run_until_complete(asyncio.sleep(.1))
@@ -817,11 +821,11 @@ def main():
     parser.add_argument("-c", dest="client", default="scratch", help="default = scratch [scratch | snap | no_client]")
     # noinspection PyPep8
     parser.add_argument("-l", dest="language", default="1", help=
-                                                                " 1=English(default) 2=Chinese(zh-CN)"
-                                                                 " 3=Chinese(zh-TW)"
-                                                                 " 4=Dutch(NL) 5=French(FR) 6=German(DE)"
-                                                                 " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
-                                                                 " 10=Portuguese(PT) 11=Spanish(ES)")
+    " 1=English(default) 2=Chinese(zh-CN)"
+    " 3=Chinese(zh-TW)"
+    " 4=Dutch(NL) 5=French(FR) 6=German(DE)"
+    " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
+    " 10=Portuguese(PT) 11=Spanish(ES)")
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
     parser.add_argument("-b", dest="base_path", default="None",
                         help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
