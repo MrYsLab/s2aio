@@ -5,7 +5,7 @@ setup(
     version='1.9',
     packages=['s2aio'],
     install_requires=['pymata-aio>=2.7',
-                      'aiohttp>=0.19.0'],
+                      'aiohttp==0.22.4'],
     package_data={'s2aio': [('configuration/*.cfg'),
                             ('miscellaneous/*.txt, *.csv, *.ods'),
                             ('ScratchFiles/ExtensionDescrptors/*.s2e'),
