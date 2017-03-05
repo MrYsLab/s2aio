@@ -715,8 +715,9 @@ class S2AIO:
             return web.Response(body="ok".encode('utf-8'))
 
         if pin_state[1] != Constants.INPUT:
-            await self.set_problem('problem 8-3\n')
-            return web.Response(body="ok".encode('utf-8'))
+            if pin_state[1] != Constants.SONAR:
+                await self.set_problem('problem 8-3\n')
+                return web.Response(body="ok".encode('utf-8'))
 
         reply = str(self.digital_data[pin]) + '\n'
 
