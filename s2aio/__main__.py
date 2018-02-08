@@ -37,16 +37,20 @@ from pymata_aio.pymata_core import PymataCore
 # noinspection PyUnusedLocal
 class S2AIO:
     def __init__(self, client='scratch', language='1', com_port=None, base_path=None,
-                 version_request=False):
+                 version_request=False, sleeper=3):
         """
         This is the constructor for the s2aio. Establish somme class variables for use
         :param client: Client specifier Scratch or Snap!
         :param com_port: Arduino com port
+        :param sleeper: time to wait before starting the watchdog timer
         :return: None
         """
 
         # establish initial base_path - where s2aio lives
         self.base_path = base_path
+
+        # set wait time before starting the watchdog timer
+        self.sleeper = sleeper
 
         # if not base path was specified, try to establish one
         if not self.base_path:
@@ -784,7 +788,7 @@ class S2AIO:
         sent, and if so, shuts down the server. It waits 2 seconds before shutting down.
         :return: None
         """
-        await asyncio.sleep(2)
+        await asyncio.sleep(self.sleeper)
         while True:
             await asyncio.sleep(1)
             current_time = self.loop.time()
@@ -830,6 +834,7 @@ def main():
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
     parser.add_argument("-b", dest="base_path", default="None",
                         help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
+    parser.add_argument("-s", dest="sleeper", default="3", help="Set timeout to allow Scratch to initialize.")
     parser.add_argument("-v", action='store_true', help='Print version and Python path')
 
     args = parser.parse_args()
@@ -847,11 +852,14 @@ def main():
 
     language_type = args.language
 
+    sleep = int(args.sleeper)
+
+
     # noinspection PyUnusedLocal
     version = parser.parse_args('-v'.split())
 
     s2aio = S2AIO(client=client_type, language=language_type, com_port=comport, base_path=user_base_path,
-                  version_request=args.v)
+                  version_request=args.v, sleeper=sleep)
 
     the_loop = asyncio.get_event_loop()
     # noinspection PyBroadException
