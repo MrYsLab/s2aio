@@ -27,6 +27,6 @@ Program, control and monitor an [Arduino](https://www.arduino.cc/) board using t
 
 ### Want to learn more? Check out the [Wiki pages](https://github.com/MrYsLab/s2aio/wiki).
 
-This project was developed using [Pycharm](https://www.jetbrains.com/pycharm/) ![](https://github.com/MrYsLab/python_banyan/blob/master/images/icon_PyCharm.png)
-
-
+This project was developed using [Pycharm](https://www.jetbrains.com/pycharm/) <a href="https://www.jetbrains.com/pycharm/">
+  <img src="https://github.com/MrYsLab/python_banyan/blob/master/images/icon_PyCharm.png" alt="PyCharm" style="width:42px;height:42px;border:0">
+</a>
