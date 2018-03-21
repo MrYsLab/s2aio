@@ -33,13 +33,17 @@ from pymata_aio.pymata_core import PymataCore
 # noinspection PyUnusedLocal
 class S2AIO:
     def __init__(self, client='scratch', language='1', com_port=None, base_path=None,
-                 version_request=False, sleeper=3):
+                 version_request=False, sleeper=10, rpi=None):
         """
         This is the constructor for the s2aio. Establish somme class variables for use
+
         :param client: Client specifier Scratch or Snap!
+        :param language: Spoken language
         :param com_port: Arduino com port
-        :param sleeper: time to wait before starting the watchdog timer
-        :return: None
+        :param base_path: Path where s2aio files were installed
+        :param version_request: Print version if set to True
+        :param sleeper: Amount of time to wait before connecting
+        :param rpi: If using an Raspberry Pi set to True
         """
 
         # establish initial base_path - where s2aio lives
@@ -47,6 +51,9 @@ class S2AIO:
 
         # set wait time before starting the watchdog timer
         self.sleeper = sleeper
+
+        # rpi connected
+        self.rpi = rpi
 
         # if not base path was specified, try to establish one
         if not self.base_path:
@@ -67,7 +74,7 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.13 - 08 Feb 2018')
+            print('s2aio version 1.14 - 21 March 2018')
             print('Python path = ' + self.base_path)
             sys.exit(0)
 
@@ -97,6 +104,8 @@ class S2AIO:
         if self.scratch_executable == 'default':
             if sys.platform.startswith('win32'):
                 self.scratch_executable = '"C:/Program Files (x86)/Scratch 2/Scratch 2.exe"'
+            elif self.rpi:
+                self.scratch_executable = '/usr/bin/scratch2'
             else:
                 self.scratch_executable = '"/opt/Scratch 2/bin/Scratch 2"'
 
@@ -830,8 +839,10 @@ def main():
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
     parser.add_argument("-b", dest="base_path", default="None",
                         help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
-    parser.add_argument("-s", dest="sleeper", default="3", help="Set timeout to allow Scratch to initialize.")
+    parser.add_argument("-s", dest="sleeper", default="10", help="Set timeout to allow Scratch to initialize.")
     parser.add_argument("-v", action='store_true', help='Print version and Python path')
+    parser.add_argument("-r", dest="rpi", default="None", help="Set to TRUE to run on a Raspberry Pi")
+
 
     args = parser.parse_args()
 
@@ -850,12 +861,17 @@ def main():
 
     sleep = int(args.sleeper)
 
+    if args.rpi == 'None':
+        args.rpi = None
+    else:
+        args.rpi = True
+
 
     # noinspection PyUnusedLocal
     version = parser.parse_args('-v'.split())
 
     s2aio = S2AIO(client=client_type, language=language_type, com_port=comport, base_path=user_base_path,
-                  version_request=args.v, sleeper=sleep)
+                  version_request=args.v, sleeper=sleep, rpi=args.rpi)
 
     the_loop = asyncio.get_event_loop()
     # noinspection PyBroadException
