@@ -21,12 +21,12 @@ Program, control and monitor an [Arduino](https://www.arduino.cc/) board using t
 
 ### **Features**
 * Written in Python using the new Python 3.5 asyncio library. 
-* Cross platform - works with Windows, Mac and Linux.
+* Cross platform - works with Windows, Mac and Linux (including Debian Raspberry Pi).
 * Easy to install.
 * Easy to use.
 
 ### Want to learn more? Check out the [Wiki pages](https://github.com/MrYsLab/s2aio/wiki).
 
-
+This project was developed using [Pycharm](https://www.jetbrains.com/pycharm/) ![](https://github.com/MrYsLab/python_banyan/blob/master/images/icon_PyCharm.png)
 
 
