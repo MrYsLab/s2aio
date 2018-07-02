@@ -1,6 +1,45 @@
 # Change Log
 
+### Version 1.15
+
+2 July 2018
+
+Using latest version of aiohttp to support Python 3.7
+
+### Version 1.14
+
+21 March 2018
+
+Improved Raspberry Pi Support
+
+### Version 1.13
+
+8 Feb 2018
+
+Fixes version reporting and updated licensing
+
+### Version 1.12
+
+8 Feb 2018
+
+Allow user to select time for Scratch to start
+
+### Version 1.11
+
+5 March 2017
+
+Repair sonar reporting bug
+
+### Version 1.10
+
+8 December 2016
+
+Force aiohttp to version 0.22.4
+
 ### Version 1.9
+
+29 July 2016
+
 Recognize Arduino pullup pin type for Firmata 2.5.3
 
 ### Version 1.8

@@ -24,6 +24,7 @@ import os.path
 import signal
 import sys
 import webbrowser
+import time
 
 from aiohttp import web
 from pymata_aio.constants import Constants
@@ -74,7 +75,7 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.14 - 21 March 2018')
+            print('s2aio version 1.15 - 2 July 2018')
             print('Python path = ' + self.base_path)
             sys.exit(0)
 
@@ -184,8 +185,25 @@ class S2AIO:
             await self.get_pin_capabilities()
 
             # start up the HTTP server
-            app = web.Application(loop=my_loop)
-            srv = await my_loop.create_server(app.make_handler(), '127.0.0.1', 50209)
+            app = web.Application()
+            # Scratch command handlers
+            app.router.add_route('GET', '/digital_pin_mode/{enable}/{pin}/{mode}', self.setup_digital_pin)
+            app.router.add_route('GET', '/analog_pin_mode/{enable}/{pin}', self.setup_analog_pin)
+            app.router.add_route('GET', '/poll', self.poll)
+            app.router.add_route('GET', '/digital_write/{pin}/{value}', self.digital_write)
+            app.router.add_route('GET', '/analog_write/{pin}/{value}', self.analog_write)
+            app.router.add_route('GET', '/play_tone/{pin}/{frequency}/{duration}', self.play_tone)
+            app.router.add_route('GET', '/set_servo_position/{pin}/{position}', self.set_servo_position)
+            app.router.add_route('GET', '/tone_off/{pin}', self.tone_off)
+
+            # Snap requires reporters to be supported
+            app.router.add_route('GET', '/digital_read/{pin}', self.digital_read)
+            app.router.add_route('GET', '/analog_read/{pin}', self.analog_read)
+            app.router.add_route('GET', '/problem', self.problem)
+            runner = web.AppRunner(app)
+            await runner.setup()
+            site = web.TCPSite(runner, '127.0.0.1', 50209)
+            await site.start()
 
             # start scratch if specified
             # open to a specified project
@@ -205,7 +223,7 @@ class S2AIO:
                     os_string = 'nohup ' + self.scratch_executable + '> /dev/null 2>&1 &'
                     os.system(os_string)
                 else:
-                    print('You must provide scratch excutable information')
+                    print('You must provide scratch executable information')
             elif self.client == 'snap':
                 new = 2
                 webbrowser.open(self.snap_url, new=new)
@@ -214,26 +232,11 @@ class S2AIO:
                 # no client specified, just start s2aio and wait for the user to start the client of choice
                 pass
 
-            # Scratch command handlers
-            app.router.add_route('GET', '/digital_pin_mode/{enable}/{pin}/{mode}', self.setup_digital_pin)
-            app.router.add_route('GET', '/analog_pin_mode/{enable}/{pin}', self.setup_analog_pin)
-            app.router.add_route('GET', '/poll', self.poll)
-            app.router.add_route('GET', '/digital_write/{pin}/{value}', self.digital_write)
-            app.router.add_route('GET', '/analog_write/{pin}/{value}', self.analog_write)
-            app.router.add_route('GET', '/play_tone/{pin}/{frequency}/{duration}', self.play_tone)
-            app.router.add_route('GET', '/set_servo_position/{pin}/{position}', self.set_servo_position)
-            app.router.add_route('GET', '/tone_off/{pin}', self.tone_off)
-
-            # Snap requires reporters to be supported
-            app.router.add_route('GET', '/digital_read/{pin}', self.digital_read)
-            app.router.add_route('GET', '/analog_read/{pin}', self.analog_read)
-            app.router.add_route('GET', '/problem', self.problem)
-
             if self.client == 'scratch':
                 await self.poll_watchdog()
             else:
                 await self.keep_alive()
-            return srv
+            # return srv
         except:
             pass
 
@@ -843,7 +846,6 @@ def main():
     parser.add_argument("-v", action='store_true', help='Print version and Python path')
     parser.add_argument("-r", dest="rpi", default="None", help="Set to TRUE to run on a Raspberry Pi")
 
-
     args = parser.parse_args()
 
     client_type = args.client
@@ -866,7 +868,6 @@ def main():
     else:
         args.rpi = True
 
-
     # noinspection PyUnusedLocal
     version = parser.parse_args('-v'.split())
 
@@ -879,7 +880,7 @@ def main():
         the_loop.run_until_complete((s2aio.kick_off(the_loop)))
     except:
         sys.exit(0)
-    asyncio.sleep(2)
+    time.sleep(2)
 
     # signal handler function called when Control-C occurs
     # noinspection PyShadowingNames,PyUnusedLocal,PyUnusedLocal
