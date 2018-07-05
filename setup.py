@@ -5,9 +5,9 @@ with open('README.md') as f:
 
 setup(
     name='s2aio',
-    version='1.15',
+    version='1.16',
     packages=['s2aio'],
-    install_requires=['pymata-aio>=2.7',
+    install_requires=['pymata-aio>=2.22',
                       'aiohttp>=3.3.2'],
     package_data={'s2aio': [('configuration/*.cfg'),
                             ('miscellaneous/*.txt, *.csv, *.ods'),

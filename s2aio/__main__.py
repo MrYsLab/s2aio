@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Created on April 28 11:39:15 2015
+
+ Copyright (c) 2015-2018 Alan Yorinks All rights reserved.
 
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
@@ -75,7 +76,7 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.15 - 2 July 2018')
+            print('s2aio version 1.16 - 5 July 2018')
             print('Python path = ' + self.base_path)
             sys.exit(0)
 
@@ -280,10 +281,8 @@ class S2AIO:
                         self.servo_capable.append(pin_count)
                     elif y == 6:
                         self.i2c_capable.append(pin_count)
-                    elif y == 13:  # ignore pull-up
+                    else: # catchall for any other  pins - ignore them
                         pass
-                    else:
-                        print('Unknown Pin Type ' + y)
                 # clear the pin_data list for the next pin and bump up the pin count
                 pin_data = []
                 # add an entry into the digital data dictionary

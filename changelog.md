@@ -1,5 +1,11 @@
 # Change Log
 
+### Version 1.16
+
+5 July 2018
+
+Changes to pymata-aio (v2.22) caused crash of s2aio. This release fixes this issue.
+
 ### Version 1.15
 
 2 July 2018
