@@ -18,7 +18,7 @@ Program, control and monitor an [Arduino](https://www.arduino.cc/) board using t
 * Italian (IT)
 * Portuguese (PT)
 * Spanish (ES)
-* Polish (Pl)
+* Polish (PL)
 
 ### **Features**
 * Written in Python using the new Python 3.5 asyncio library. 
