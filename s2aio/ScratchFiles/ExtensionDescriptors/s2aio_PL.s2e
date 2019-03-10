@@ -7,7 +7,7 @@
             " ",
             "%m.pin_state pin cyfrowy %n jako %m.digital_pin_mode",
             "digital_pin_mode",
-            "Włączony",
+            "Włącz",
             "PIN",
             "Wejście"
         ],
@@ -15,7 +15,7 @@
             " ",
             "%m.pin_state pin analogowy (A) %n jako wejście ",
             "analog_pin_mode",
-            "Włączony",
+            "Włącz",
             "PIN"
         ],
         [
@@ -74,8 +74,8 @@
     ],
     "menus": {
         "pin_state": [
-            "Włączony",
-            "Wyłączony"
+            "Włącz",
+            "Wyłącz"
         ],
         "digital_pin_mode": [
             "Wejście",
