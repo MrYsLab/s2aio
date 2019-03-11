@@ -116,7 +116,7 @@ class S2AIO:
                                        '5': 's2aio_base_FR.sb2', '6': 's2aio_base_DE.sb2',
                                        '7': 's2aio_base_GR.sb2', '8': 's2aio_base_KO.sb2',
                                        '9': 's2aio_base_IT.sb2', '10': 's2aio_base_PT.sb2',
-                                       '11': 's2aio_base_ES.sb2'}
+                                       '11': 's2aio_base_ES.sb2', '12': 's2aio_base_PL.sb2'}
 
         self.scratch_language = config.get('scratch_info', 'scratch_language')
         self.snap_url = config.get('scratch_info', 'snap_url')

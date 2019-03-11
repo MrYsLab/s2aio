@@ -1,0 +1,97 @@
+{
+    "extensionName": "s2aio",
+    "extensionPort": 50209,
+    "url": "https://github.com/MrYsLab/PyMata",
+    "blockSpecs": [
+        [
+            " ",
+            "%m.pin_state pin cyfrowy %n jako %m.digital_pin_mode",
+            "digital_pin_mode",
+            "Włącz",
+            "PIN",
+            "Wejście"
+        ],
+        [
+            " ",
+            "%m.pin_state pin analogowy (A) %n jako wejście ",
+            "analog_pin_mode",
+            "Włącz",
+            "PIN"
+        ],
+        [
+            "",
+            "Zapisz do pinu %n wartość %m.high_low",
+            "digital_write",
+            "PIN",
+            0
+        ],
+        [
+            "",
+            "Zapisz do pinu %n wartość PWM %n",
+            "analog_write",
+            "PIN",
+            "VAL"
+        ],
+        [
+            "",
+            "Odtwórz dźwięk na pinie: %n Hz: %n ms: %n",
+            "play_tone",
+            "PIN",
+            1000,
+            500
+        ],
+        [
+            "",
+            "Wyłącz dźwięk na pinie: %n",
+            "tone_off",
+            "PIN"
+        ],
+        [
+            "",
+            "Ustaw serwo na pinie %n st. %n",
+            "set_servo_position",
+            "PIN",
+            90
+        ],
+        [
+            "r",
+            "Odczytaj pin cyfrowy %n",
+            "digital_read",
+            "PIN"
+        ],
+        [
+            "r",
+            "Odczytaj pin analogowy (A) %n",
+            "analog_read",
+            "PIN"
+        ],
+        [
+            "r",
+            "Debugger",
+            "problem"
+        ]
+
+    ],
+    "menus": {
+        "pin_state": [
+            "Włącz",
+            "Wyłącz"
+        ],
+        "digital_pin_mode": [
+            "Wejście",
+            "Wyjście",
+            "PWM",
+            "Serwo",
+            "Dźwięk",
+            "SONAR"
+        ],
+        "high_low": [
+            "0",
+            "1"
+        ],
+        "off_on": [
+            "Nie",
+            "Tak"
+        ]
+    }
+}
