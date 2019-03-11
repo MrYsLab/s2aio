@@ -1,5 +1,11 @@
 # Change Log
 
+### Version 1.17
+
+11 March 2019
+
+Polish translation added.
+
 ### Version 1.16
 
 5 July 2018
