@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name='s2aio',
-    version='1.16',
+    version='1.17',
     packages=['s2aio'],
     install_requires=['pymata-aio>=2.22',
                       'aiohttp>=3.3.2'],

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 
- Copyright (c) 2015-2018 Alan Yorinks All rights reserved.
+ Copyright (c) 2015-2019 Alan Yorinks All rights reserved.
 
  This program is free software; you can redistribute it and/or
  modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
@@ -76,7 +76,7 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.16 - 5 July 2018')
+            print('s2aio version 1.17 - 1 March 2019')
             print('Python path = ' + self.base_path)
             sys.exit(0)
 
@@ -837,7 +837,8 @@ def main():
     " 3=Chinese(zh-TW)"
     " 4=Dutch(NL) 5=French(FR) 6=German(DE)"
     " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
-    " 10=Portuguese(PT) 11=Spanish(ES)")
+    " 10=Portuguese(PT) 11=Spanish(ES)"
+    " 12=Polish(PO)")
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
     parser.add_argument("-b", dest="base_path", default="None",
                         help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
