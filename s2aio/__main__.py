@@ -838,7 +838,7 @@ def main():
     " 4=Dutch(NL) 5=French(FR) 6=German(DE)"
     " 7=Greek(GR) 8=Korean(KO) 9=Italian(IT)"
     " 10=Portuguese(PT) 11=Spanish(ES)"
-    " 12=Polish(PO)")
+    " 12=Polish(PL)")
     parser.add_argument("-p", dest="comport", default="None", help="Arduino COM port - e.g. /dev/ttyACMO or COM3")
     parser.add_argument("-b", dest="base_path", default="None",
                         help="Python File Path - e.g. /usr/local/lib/python3.5/dist-packages/s2aio")
