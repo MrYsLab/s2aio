@@ -123,7 +123,12 @@ class S2AIO:
 
         self.windows_wait_time = int(config.get('scratch_info', 'windows_wait_time'))
 
-        self.scratch_project = self.base_path + '/ScratchFiles/ScratchProjects/' + scratch_block_language_dict[language]
+        if sys.platform.startswith('win32'):
+            self.scratch_project = '"' + self.base_path + '"' + '/ScratchFiles/ScratchProjects/' + scratch_block_language_dict[language]
+        elif self.rpi:
+            self.scratch_project = self.base_path + '/ScratchFiles/ScratchProjects/' + scratch_block_language_dict[language]
+        else:
+            self.scratch_project = self.base_path + '/ScratchFiles/ScratchProjects/' + scratch_block_language_dict[language]
 
         self.client = client
 
