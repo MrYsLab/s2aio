@@ -76,7 +76,7 @@ class S2AIO:
         # get version info if requested
         if version_request:
             print()
-            print('s2aio version 1.17 - 1 March 2019')
+            print('s2aio version 1.18 - 2 November 2019')
             print('Python path = ' + self.base_path)
             sys.exit(0)
 
